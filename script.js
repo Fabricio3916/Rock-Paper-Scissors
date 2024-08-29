@@ -10,7 +10,8 @@ function getComputerChoice(){
 }
 
 function getHumanChoice(){
-    return prompt("Rock, Paper, Scissors!");
+    let playerChoice = prompt("Rock, Paper, Scissors!");
+    return playerChoice;
 }
 
 function playRound(playerChoice,computerChoice){
@@ -40,7 +41,7 @@ function playRound(playerChoice,computerChoice){
         computerScore++;
         return "You lose, Scissors beats Paper";
     }
-
+    
     else if( playerChoice == "scissor" && computerChoice == "rock"){
         computerScore++;
         return "You lose, Rock beats Scissor!";
@@ -52,17 +53,23 @@ function playRound(playerChoice,computerChoice){
     else if(playerChoice == "scissor" && computerChoice == "scissor"){
         return "Draw between Scissors!";
     }
-
-
 }
 
+function playGame(){
+    while(round < 5){
+        let computerChoice = getComputerChoice();
+        let playerChoice = getHumanChoice();
+        let gameResult = playRound(playerChoice, computerChoice);
+        round++
+        console.log(gameResult);
+        console.log("The computer score is " + computerScore);
+        console.log("The player score is: " + playerScore);
+        console.log("------");
+    }
+}
 
-
+let round = 0;
 let computerScore = 0;
 let playerScore = 0;
-const computerChoice = getComputerChoice();
-const playerChoice = getHumanChoice();
-let gameResult = playRound(playerChoice, computerChoice);
-console.log(gameResult);
-console.log("The computer score is " + computerScore);
-console.log("The player score is: " + playerScore)
+playGame();
+
